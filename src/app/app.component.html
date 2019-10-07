@@ -1,0 +1,21 @@
+<div class="main">
+  <div class="header">
+    <h1> HN Feed </h1>
+    <h3> We &lt;3 hacker news! </h3>
+  </div>
+  <div class="content">
+    <mat-list role="list" *ngFor="let item of data; let i=index"  (click)="clickedRow(i)">
+      <mat-list-item class="item" appBgColor >
+        <p class="title"> {{ item.title | title }} &nbsp;</p> <p class="author">- {{ item.author }} - </p>  
+        <p class="time icon"> 
+            {{ item.created_at | date: 'HH:mm aa' }}
+            <mat-icon [index]="i" [appIcon]="selectedRow"  (click)="deletePost()">delete</mat-icon>
+        </p> 
+        </mat-list-item>
+        </mat-list>
+    </div>
+</div>
+
+<div class="loading-indicator" *ngIf="showSpinner">
+    <mat-spinner mode="indeterminate"></mat-spinner>
+</div>
